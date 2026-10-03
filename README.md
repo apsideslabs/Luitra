@@ -1,23 +1,35 @@
 <div align="center">
 
-<img src="assets/og-cover.svg" alt="Luitra — an academic-grade platform for learning Assamese" width="820">
+<img src="assets/logo.svg" alt="Luitra — an academic-grade platform for learning Assamese" width="440">
 
 # Luitra · অসমীয়া
 
-**An academic-grade, self-contained platform for learning Assamese (অসমীয়া, Asomiya)** — the Indo-Aryan language of Assam, India.
+**An academic-grade, self-contained platform for learning Assamese (অসমীয়া · Oxomiya)** — the Indo-Aryan language of Assam, India.
 
-[![version](https://img.shields.io/badge/version-2.0.0-4338ca?style=flat-square)](CHANGELOG.md)
-[![license](https://img.shields.io/badge/license-MIT-0f766e?style=flat-square)](LICENSE)
-[![dependencies](https://img.shields.io/badge/runtime%20dependencies-0-b45309?style=flat-square)](#-design-constraints)
-[![build](https://img.shields.io/badge/build%20step-none-6d28d9?style=flat-square)](#-design-constraints)
-[![offline](https://img.shields.io/badge/works-offline-15803d?style=flat-square)](#-getting-started)
-[![pages](https://img.shields.io/badge/GitHub%20Pages-live-3730a3?style=flat-square)](https://apsideslabs.github.io/Luitra/)
+**15 lessons · 19 grammar sections · a 433-word dictionary · 146 phrases · 17 dialogues · flashcards and a phrase translator** — all running in the browser, with no build step and no runtime dependencies.
+
+[![Live site](https://img.shields.io/badge/live%20site-open-4338ca?style=flat-square&logo=githubpages&logoColor=white)](https://apsideslabs.github.io/Luitra/)
+[![Version](https://img.shields.io/badge/version-3.3.1-4338ca?style=flat-square)](CHANGELOG.md)
+[![Licence](https://img.shields.io/badge/licence-MIT-0f766e?style=flat-square)](LICENSE)
+[![Runtime dependencies](https://img.shields.io/badge/runtime%20dependencies-0-b45309?style=flat-square)](#design-constraints)
+[![Build step](https://img.shields.io/badge/build%20step-none-6d28d9?style=flat-square)](#design-constraints)
+
 [![CI](https://img.shields.io/badge/CI-validate%20%2B%20secret%20scan-0f766e?style=flat-square)](.github/workflows/ci.yml)
-[![icons](https://img.shields.io/badge/icons-Lucide%20ISC-6d28d9?style=flat-square)](assets/icons.svg)
-[![PRs](https://img.shields.io/badge/PRs-welcome-15803d?style=flat-square)](CONTRIBUTING.md)
-[![contributors](https://img.shields.io/badge/contributors-wanted-b45309?style=flat-square)](CONTRIBUTORS.md)
+[![Offline](https://img.shields.io/badge/works-offline-15803d?style=flat-square)](#install--updates)
+[![PWA](https://img.shields.io/badge/installable-PWA-3730a3?style=flat-square)](#install--updates)
+[![Accessibility](https://img.shields.io/badge/accessibility-WCAG%202.1%20AA-0f766e?style=flat-square)](docs/ACCESSIBILITY.md)
+[![Icons](https://img.shields.io/badge/icons-Lucide%20ISC-6d28d9?style=flat-square)](assets/icons.svg)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-15803d?style=flat-square)](CONTRIBUTING.md)
+[![Contributors wanted](https://img.shields.io/badge/contributors-wanted-b45309?style=flat-square)](CONTRIBUTORS.md)
 
-**[Open the live site →](https://apsideslabs.github.io/Luitra/)**
+<sub><b>Topics:</b>
+<code>assamese</code> <code>asomiya</code> <code>oxomiya</code> <code>indo-aryan</code>
+<code>assamese-language</code> <code>language-learning</code> <code>assam</code>
+<code>northeast-india</code> <code>bengali-assamese</code> <code>education</code>
+<code>offline-first</code> <code>pwa</code> <code>static-site</code>
+<code>vanilla-js</code> <code>no-dependencies</code> <code>github-pages</code></sub>
+
+**[Open the live site →](https://apsideslabs.github.io/Luitra/)** · **[Read the docs →](docs/)** · **[Contribute →](CONTRIBUTING.md)**
 
 </div>
 
@@ -25,12 +37,17 @@
 
 ## Contents
 
-- [What this is](#what-this-is)
+- [Overview](#overview)
+- [At a glance](#at-a-glance)
 - [Features](#features)
 - [Architecture](#architecture)
+- [How a page is built](#how-a-page-is-built)
+- [Curriculum](#curriculum)
+- [Feature map](#feature-map)
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
 - [Install & updates](#install--updates)
+- [Progress & gamification](#progress--gamification)
 - [The display panel](#the-display-panel)
 - [Content model](#content-model)
 - [Design constraints](#design-constraints)
@@ -39,12 +56,13 @@
 - [Contributing](#contributing)
 - [Security](#security)
 - [Roadmap](#roadmap)
+- [Release history](#release-history)
 - [Licence](#licence)
 - [Credits](#credits)
 
 ---
 
-## What this is
+## Overview
 
 Luitra is a complete course in Assamese that runs entirely in the browser. It is built for people who
 want to actually learn the language rather than sample it: a graded curriculum, a descriptive grammar
@@ -58,6 +76,28 @@ files the browser executes. Clone it, open `index.html`, and it works — includ
 > **On the name.** *Asomiya* (অসমীয়া) is the language's own name for itself, and the attested English
 > romanisation used by Assamese publications. The word carries the language's signature /x/ sound,
 > written শ — the sound that makes অসম become *Oxom*.
+
+---
+
+## At a glance
+
+| | |
+| --- | --- |
+| **Language taught** | Assamese / Oxomiya · ISO 639-3 [`asm`](https://iso639-3.sil.org/code/asm) |
+| **Script** | Assamese (Bengali–Assamese script), with romanisation throughout |
+| **Curriculum** | 15 lessons across four levels |
+| **Grammar** | 19 reference sections |
+| **Dictionary** | 433 words · 21 categories |
+| **Phrases** | 146 across 20 settings |
+| **Dialogues** | 17, with side-by-side English and pronunciation |
+| **Reading** | 8 graded passages |
+| **Practice** | Flashcards (both directions) and a phrase translator |
+| **Progress** | XP · 15 ranks · 18 trophies · saved words |
+| **Pages** | 19, plus a 404 |
+| **Runtime dependencies** | none |
+| **Build step** | none |
+| **Offline** | yes — installable PWA |
+| **Licence** | MIT |
 
 ---
 
@@ -96,7 +136,7 @@ that data, and the visual system is four stylesheets driven by design tokens.
 
 ```mermaid
 flowchart LR
-    A["index.html<br/><small>static shell</small>"] --> B["js/data/*.js<br/><small>12 content modules</small>"]
+    A["index.html<br/><small>static shell</small>"] --> B["js/data/*.js<br/><small>15 content modules</small>"]
     B --> C["js/data/index.js<br/><small>merges into window.ASM</small>"]
     C --> D["js/app.js<br/><small>boot()</small>"]
     D --> E["js/ui/chrome.js<br/><small>header + footer + nav</small>"]
@@ -142,6 +182,75 @@ graph TD
 
 ---
 
+## How a page is built
+
+There is no server render and no hydration step. Every page follows the same short sequence:
+
+```mermaid
+sequenceDiagram
+  autonumber
+  participant B as Browser
+  participant A as app.js
+  participant D as js/data/index.js
+  participant R as js/ui + js/render
+  participant S as localStorage
+  B->>A: open any page
+  A->>A: boot()
+  A->>D: read content into window.ASM
+  A->>S: restore display preferences
+  A->>R: build header, sidebar, panel
+  R->>B: render into #page-body
+  A->>R: build the on-this-page column
+  B->>A: learner interacts
+  A->>S: save XP, streak, saved words
+```
+
+---
+
+## Curriculum
+
+The 15 lessons are graded into four levels. Each level assumes the one before it, and the quiz draws on
+everything unlocked so far.
+
+```mermaid
+flowchart LR
+  A["Basic<br/>lessons 1–4"] --> B["Elementary<br/>lessons 5–8"] --> C["Intermediate<br/>lessons 9–12"] --> D["Advanced<br/>lessons 13–15"]
+  A --> P
+  B --> P
+  C --> P
+  D --> P
+  P["Quiz & flashcards<br/>XP · ranks · trophies"]
+```
+
+---
+
+## Feature map
+
+```mermaid
+mindmap
+  root((Luitra))
+    Learn
+      15 graded lessons
+      19 grammar sections
+      Verb tables
+      Script and sounds
+    Practise
+      Flashcards
+      Phrase translator
+      Running score
+    Reference
+      433-word dictionary
+      146 phrases
+      17 dialogues
+      Idioms and proverbs
+    Track
+      XP and 15 ranks
+      18 trophies
+      Saved words
+```
+
+---
+
 ## Project structure
 
 ```
@@ -162,18 +271,19 @@ Luitra/
 │   ├── app.js              # boot: icons → prefs → chrome → page → TOC
 │   ├── core/
 │   │   ├── store.js        # localStorage + the gamified mastery engine
-│   │   │                   #   (XP, 15 ranks, streaks, saved words, profile)
+│   │   │                   #   (XP, 15 ranks, trophies, saved words, profile)
+│   │   ├── prefs.js        # display preferences engine
+│   │   ├── icons.js        # generated icon helper (Lucide sprite, inlined)
 │   │   ├── update.js       # service worker + the update banner (PWA)
 │   │   ├── install.js      # install offer, app mode, display-mode stamp
-│   │   ├── prefs.js        # display preferences engine
-│   │   └── icons.js        # generated icon helper (Lucide sprite, inlined)
+│   │   └── splash.js       # splash screen for the installed app
 │   ├── data/
 │   │   ├── meta.js         # site metadata, facts, credits
 │   │   ├── lessons.js      # 15 lessons
 │   │   ├── script.js       # vowels, consonants, notes
-│   │   ├── grammar.js      # grammar reference sections
+│   │   ├── grammar.js      # 19 grammar reference sections
 │   │   ├── verbs.js        # persons, tenses, negation, imperative, aspect
-│   │   ├── numbers.js      # numerals, pattern, time words
+│   │   ├── numbers.js      # numerals, pattern, time words, months
 │   │   ├── dictionary.js   # 433 entries
 │   │   ├── phrases.js      # 146 phrases by setting
 │   │   ├── dialogues.js    # 17 conversations
@@ -184,18 +294,20 @@ Luitra/
 │   │   ├── contribute.js   # contribution guide content
 │   │   └── index.js        # merges everything into window.ASM
 │   ├── ui/
-│   │   ├── chrome.js       # navigation model, header, footer
+│   │   ├── chrome.js       # navigation model, header, footer, install banner
 │   │   ├── sidebar.js      # grouped navigation + progress card
 │   │   ├── mobilenav.js    # mobile bottom bar
 │   │   ├── panel.js        # the floating display panel
 │   │   ├── toc.js          # on-this-page column with scroll spy
 │   │   ├── motion.js       # scroll-reveal and stat count-up
+│   │   └── update.js       # the Updates button
 │   └── render/
 │       ├── renderers.js    # the static content pages
 │       └── interactive.js  # quiz and translator
 │
 ├── assets/
-│   ├── favicon.svg · logo.svg · logo-mark.svg · icon-maskable.svg · og-cover.svg
+│   ├── logo.svg · logo-mark.svg · splash-logo.svg · og-cover.svg
+│   ├── favicon.svg · apsides-labs.svg · icon-maskable.svg
 │   ├── icon-192.png · icon-512.png · icon-maskable-512.png · apple-touch-icon.png
 │   └── icons.svg           # Lucide sprite (ISC)
 │
@@ -208,7 +320,8 @@ Luitra/
 │
 ├── tools/
 │   ├── check-links.mjs     # dependency-free internal link checker
-│   └── build-sitemap.mjs   # regenerates sitemap.xml from the pages
+│   ├── build-sitemap.mjs   # regenerates sitemap.xml from the pages
+│   └── build-pwa.mjs       # regenerates icons and the manifest
 │
 ├── .github/
 │   ├── workflows/ci.yml    # validation + secret scanning
@@ -218,7 +331,7 @@ Luitra/
 │
 ├── CONTRIBUTING.md · SECURITY.md · CODE_OF_CONDUCT.md
 ├── CHANGELOG.md · CONTRIBUTORS.md · LICENSE · README.md
-├── sw.js · version.json · manifest.webmanifest
+├── sw.js · version.json · manifest.webmanifest · metadata.json · server.js
 ├── robots.txt · sitemap.xml · _headers
 └── .nojekyll · .gitignore
 ```
@@ -285,7 +398,7 @@ Nothing about the content changes: every page, every word and the whole offline 
 
 ---
 
-## Gamification
+## Progress & gamification
 
 The platform is a **language studio**, not a static reader. Everything below is computed on the
 device and stored in `localStorage` — there is no account and nothing is uploaded.
@@ -302,6 +415,8 @@ device and stored in `localStorage` — there is no account and nothing is uploa
   JSON, so progress survives a cleared browser.
 - The rank and trophy definitions live in `js/core/store.js` and the Progress renderer; the
   content is Assamese and the rank titles are English.
+
+---
 
 ## The display panel
 
@@ -421,9 +536,27 @@ enabled, and CI runs a dependency-free secret scan on every push.
 
 ## Roadmap
 
-Planned: audio pronunciation, spaced-repetition review, an offline service worker, and growing the
-dictionary towards 300 entries. Explicitly **not** planned: ads, tracking, telemetry, accounts, CDNs
-and a build step. Full detail in [`docs/ROADMAP.md`](docs/ROADMAP.md).
+Planned: audio pronunciation, spaced-repetition review, and growing the dictionary and reading material.
+Explicitly **not** planned: ads, tracking, telemetry, accounts, CDNs and a build step. Full detail in
+[`docs/ROADMAP.md`](docs/ROADMAP.md).
+
+---
+
+## Release history
+
+```mermaid
+timeline
+  title Luitra releases
+  1.0.0 : First release : the platform and its architecture
+  1.2.0 : Installable PWA : in-app update notice
+  1.4.0 : Alphabet chart : learning to read
+  2.0.0 : Full redesign : a gamified learning studio
+  3.0.0 : Renamed to Luitra (লুইত্ৰা)
+  3.1.0 : App icon and header brand
+  3.3.1 : Install banner on every page
+```
+
+The full, itemised list is in [`CHANGELOG.md`](CHANGELOG.md).
 
 ---
 
