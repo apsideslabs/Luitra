@@ -1,0 +1,8 @@
+{
+  "name": "Luitra — Assamese Learning Platform",
+  "description": "Luitra is a free, offline, dependency-free platform for learning Assamese — lessons, grammar, verb tables, script, dictionary, phrases, conversations, quiz and translator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

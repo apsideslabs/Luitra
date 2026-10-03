@@ -1,0 +1,7 @@
+# Luitra — Assamese Learning Platform
+# https://github.com/apsideslabs/Luitra
+
+User-agent: *
+Allow: /
+
+Sitemap: https://apsideslabs.github.io/Luitra/sitemap.xml
