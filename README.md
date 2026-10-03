@@ -429,7 +429,7 @@ and a build step. Full detail in [`docs/ROADMAP.md`](docs/ROADMAP.md).
 
 ## Licence
 
-[MIT](LICENSE) © 2026 The Study Cipher.
+[MIT](LICENSE) © 2026 Apsides Labs.
 
 ---
 

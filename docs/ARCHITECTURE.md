@@ -9,7 +9,7 @@ site is deployed.
 
 - Repository: <https://github.com/apsideslabs/Luitra>
 - Live site: <https://apsideslabs.github.io/Luitra/>
-- Version: 1.0.0 — Licence: MIT — Author: The Study Cipher
+- Version: 1.0.0 — Licence: MIT — Author: Apsides Labs
 
 ## Design constraints
 
