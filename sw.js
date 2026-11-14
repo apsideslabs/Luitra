@@ -12,7 +12,7 @@
        background when a new worker takes over
    ============================================================ */
 
-const VERSION = "3.3.2";
+const VERSION = "3.4.0";
 const CACHE = "luitra-" + VERSION;
 
 const PRECACHE = [

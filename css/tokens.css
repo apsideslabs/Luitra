@@ -1,86 +1,103 @@
 /* ============================================================
    Luitra — design tokens
-   Crafted, tactile, gamified language studio design system.
-   Typography: Outfit (display) + DM Sans (body) + JetBrains Mono.
+   "Luitra Press" — the design language of a printed language primer,
+   not a SaaS dashboard.
+
+   The rules, in order of importance:
+     1. Type does the work. A serif reading face, a measured column,
+        generous leading. Sans only for chrome and labels.
+     2. Structure with RULES, not boxes. Hairlines separate; nothing
+        floats, nothing has a lip, nothing casts a shadow.
+     3. No gradients. No glass. No pill buttons. Corners are 2–4px.
+     4. One ink blue and one vermilion. Colour is a mark, not a mood.
+     5. The Assamese script is the ornament. It gets size and air.
+
    Typefaces are named in the stacks below but never fetched — the
    no-CDN / works-offline invariant rules out a runtime @import, so
-   these resolve from fonts the reader already has.
-   Palette: Warm Studio Stone & Crisp Elevated Surfaces with
-   Electric Indigo, Emerald Teal, and Sunburst Gold XP accents.
+   these resolve from fonts the reader already has. That is why the
+   stacks lead with faces that ship with real systems (Georgia,
+   Palatino, Iowan; Noto/Nirmala for the Bengali–Assamese script)
+   rather than with webfonts that would silently fall back.
    ============================================================ */
 
 :root {
-  /* --- brand & mastery accents --- */
-  --brand: #4338ca;
-  --brand-ink: #312e81;
-  --brand-soft: #eef2ff;
+  /* --- ink --- */
+  --brand: #1b3a8c;
+  --brand-ink: #122a66;
+  --brand-soft: #ecf0f8;
 
   /* --- Apsides Labs maker mark --- */
   --logo-ink: #032351;
   --logo-accent: #0664fb;
-  --accent: #0d9488;
-  --accent-soft: #f0fdfa;
 
-  /* --- gamified XP & streak tokens --- */
-  --xp: #d97706;
-  --xp-soft: #fef3c7;
-  --xp-border: #f59e0b;
+  /* --- rubrication: the second ink, used for marks and the script --- */
+  --accent: #a8401f;
+  --accent-soft: #fbede7;
 
-  /* --- 60% warm tactile studio canvas & 30% crisp card surfaces --- */
-  --bg: #f6f5f0;
-  --bg-soft: #efece6;
-  --surface: #ffffff;
-  --surface-2: #f3f1ec;
-  --surface-3: #e7e4dc;
+  /* --- gamified XP & streak (ochre, not a highlighter) --- */
+  --xp: #8a5a00;
+  --xp-soft: #f7efdc;
+  --xp-border: #b8862b;
+
+  /* --- paper --- */
+  --bg: #fbf8f1;
+  --bg-soft: #f4efe4;
+  --surface: #fffdf8;
+  --surface-2: #f7f2e7;
+  --surface-3: #efe8d9;
 
   /* --- text hierarchy --- */
-  --ink: #141413;
-  --ink-soft: #2c2b28;
-  --muted: #615e57;
-  --faint: #8f8b82;
+  --ink: #1b1a17;
+  --ink-soft: #3a3730;
+  --muted: #6e685d;
+  --faint: #928b7e;
 
-  /* --- tactile borders & lips --- */
-  --line: #e5e2da;
-  --line-strong: #d0ccc0;
-  --outline: #ddd9ce;
-  --outline-hover: #b8b2a4;
+  /* --- hairlines --- */
+  --line: #e4dccc;
+  --line-strong: #cfc5b0;
+  --outline: #e4dccc;
+  --outline-hover: #cfc5b0;
 
-  /* --- semantic states --- */
-  --ok: #0d9488;
-  --ok-soft: #ccfbf1;
-  --warn: #d97706;
-  --warn-soft: #fef3c7;
-  --danger: #e11d48;
-  --danger-soft: #ffe4e6;
+  /* --- semantic states, in ink --- */
+  --ok: #1f6b4a;
+  --ok-soft: #e4f1ea;
+  --warn: #8a5a00;
+  --warn-soft: #f7efdc;
+  --danger: #a22a2a;
+  --danger-soft: #f8e6e4;
 
-  /* --- crafted non-generic typography --- */
-  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Outfit", "DM Sans", system-ui, sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* --- typography ---
+     The reading face is a serif. Georgia is on essentially every device;
+     the others are there for the ones that have something better. */
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-serif);
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   /* The stack for the language being learnt. The token keeps its historical
-     name from the Bodo reference; here it resolves to the Assamese script. */
-  --font-bo: "Noto Sans Bengali", "Noto Serif Bengali", "Nirmala UI", "Vrinda", "Shonar Bangla", system-ui, sans-serif;
+     name from the Bodo reference; here it resolves to the Assamese script.
+     Serif first, so the script sits with the body text rather than against it. */
+  --font-bo: "Noto Serif Bengali", "Noto Sans Bengali", "Nirmala UI", "Bangla Sangam MN", "Vrinda", "Shonar Bangla", "Kalpurush", system-ui, serif;
   --font-as: var(--font-bo);
-  --font: var(--font-sans);
+  --font: var(--font-serif);
 
-  --fs-xs: 0.78125rem;  /* 12.5px */
-  --fs-sm: 0.875rem;    /* 14px */
-  --fs-base: 0.96875rem;/* 15.5px */
-  --fs-lg: 1.125rem;    /* 18px */
-  --fs-xl: 1.28rem;     /* 20.5px */
-  --fs-2xl: 1.55rem;    /* 25px */
-  --fs-3xl: 1.95rem;    /* 31px */
-  --fs-4xl: 2.4rem;     /* 38.4px */
-  --fs-5xl: 3rem;       /* 48px */
+  /* A book sets its text a little larger than a dashboard does. */
+  --fs-xs: 0.8125rem;   /* 13px   */
+  --fs-sm: 0.9375rem;   /* 15px   */
+  --fs-base: 1.0625rem; /* 17px   */
+  --fs-lg: 1.1875rem;   /* 19px   */
+  --fs-xl: 1.375rem;    /* 22px   */
+  --fs-2xl: 1.75rem;    /* 28px   */
+  --fs-3xl: 2.25rem;    /* 36px   */
+  --fs-4xl: 3rem;       /* 48px   */
+  --fs-5xl: clamp(2.6rem, 5vw, 4rem);
 
-  --lh-tight: 1.16;
-  --lh-snug: 1.35;
-  --lh-base: 1.62;
-  --lh-loose: 1.75;
+  --lh-tight: 1.12;
+  --lh-snug: 1.34;
+  --lh-base: 1.7;
+  --lh-loose: 1.82;
 
-  --tracking-tight: -0.024em;
-  --tracking-wide: 0.065em;
+  --tracking-tight: -0.018em;
+  --tracking-wide: 0.12em;
 
   /* --- space (4px base) --- */
   --sp-1: 0.25rem;
@@ -93,46 +110,46 @@
   --sp-8: 3.25rem;
   --sp-9: 4rem;
 
-  /* --- tactile rounded geometry --- */
-  --radius-sm: 8px;
-  --radius: 11px;
-  --radius-lg: 15px;
-  --radius-xl: 20px;
-  --radius-pill: 999px;
+  /* --- geometry: square-ish, like a printed page --- */
+  --radius-sm: 2px;
+  --radius: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  --radius-pill: 3px;
 
-  /* --- signature tactile elevation (bottom lip + soft ambient shadow) --- */
-  --shadow-xs: 0 1px 2px rgba(20, 20, 19, 0.05);
-  --shadow-sm: 0 2px 0 var(--outline), 0 4px 10px -2px rgba(20, 20, 19, 0.05);
-  --shadow: 0 3px 0 var(--outline), 0 10px 24px -6px rgba(20, 20, 19, 0.08);
-  --shadow-lg: 0 18px 42px -10px rgba(20, 20, 19, 0.16);
-  --shadow-card: 0 3px 0 var(--outline), 0 8px 20px -8px rgba(20, 20, 19, 0.07);
-  --shadow-card-hover: 0 5px 0 var(--outline-hover), 0 14px 28px -8px rgba(20, 20, 19, 0.12);
+  /* --- depth: none. Separation is done with hairlines. --- */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow: none;
+  --shadow-lg: none;
+  --shadow-card: none;
+  --shadow-card-hover: none;
 
-  /* --- domain hues for module distinction --- */
-  --hue-a: #4338ca; --hue-a-soft: #eef2ff;
-  --hue-b: #0d9488; --hue-b-soft: #ccfbf1;
-  --hue-c: #d97706; --hue-c-soft: #fef3c7;
-  --hue-d: #e11d48; --hue-d-soft: #ffe4e6;
+  /* --- domain inks for module distinction --- */
+  --hue-a: #1b3a8c; --hue-a-soft: #ecf0f8;
+  --hue-b: #a8401f; --hue-b-soft: #fbede7;
+  --hue-c: #8a5a00; --hue-c-soft: #f7efdc;
+  --hue-d: #1f6b4a; --hue-d-soft: #e4f1ea;
 
-  /* --- layout (1440px desktop baseline) --- */
+  /* --- layout --- */
   --header-h: 60px;
   --mobilenav-h: 58px;
   --sidebar-w: 272px;
-  --content-max: 1340px;
-  --prose-max: 68ch;
+  --content-max: 1280px;
+  --prose-max: 66ch;
   --toc-w: 220px;
 
-  /* --- gradients --- */
-  --grad-brand: linear-gradient(135deg, #312e81 0%, #4338ca 52%, #0f766e 100%);
-  --grad-sheen: linear-gradient(90deg, var(--brand), var(--accent));
-  --grad-surface: linear-gradient(180deg, color-mix(in srgb, var(--brand) 5%, var(--surface)), var(--surface));
+  /* --- flat fills where gradients used to be --- */
+  --grad-brand: var(--brand-ink);
+  --grad-sheen: var(--brand);
+  --grad-surface: var(--surface);
 
   /* --- motion --- */
   --dur-fast: 120ms;
   --dur: 170ms;
   --dur-slow: 320ms;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-out: cubic-bezier(0.2, 0.7, 0.3, 1);
 
   /* --- display controls --- */
   --text-scale: 1;
@@ -147,57 +164,57 @@
   :root { --header-h: 64px; }
 }
 
-/* ---------- dark theme (Midnight Studio) ---------- */
+/* ---------- dark theme: the same press, printed on black ---------- */
 html[data-theme="dark"] {
-  --brand: #818cf8;
-  --brand-ink: #a5b4fc;
-  --brand-soft: rgba(129, 140, 248, 0.15);
+  --brand: #93abe6;
+  --brand-ink: #b9c9f2;
+  --brand-soft: rgba(147, 171, 230, 0.14);
 
   /* the mark's navy would disappear on a dark ground, so it is lifted
      the way every other brand colour is */
   --logo-ink: #e9eefb;
   --logo-accent: #6ea8ff;
-  --accent: #2dd4bf;
-  --accent-soft: rgba(45, 212, 191, 0.14);
+  --accent: #e0784f;
+  --accent-soft: rgba(224, 120, 79, 0.14);
 
-  --xp: #fbbf24;
-  --xp-soft: rgba(251, 191, 36, 0.15);
-  --xp-border: #f59e0b;
+  --xp: #d8a24a;
+  --xp-soft: rgba(216, 162, 74, 0.15);
+  --xp-border: #b8862b;
 
-  --bg: #0c0f16;
-  --bg-soft: #111621;
-  --surface: #161c28;
-  --surface-2: #1e2636;
-  --surface-3: #283246;
+  --bg: #14130f;
+  --bg-soft: #1b1a15;
+  --surface: #1a1915;
+  --surface-2: #211f19;
+  --surface-3: #2a271f;
 
-  --ink: #f3f4f6;
-  --ink-soft: #d1d5db;
-  --muted: #9ca3af;
-  --faint: #6b7280;
+  --ink: #f2ede2;
+  --ink-soft: #d8d2c6;
+  --muted: #a9a296;
+  --faint: #857f73;
 
-  --line: #232c3d;
-  --line-strong: #323f57;
-  --outline: #263044;
-  --outline-hover: #3f4f6e;
+  --line: #2e2b24;
+  --line-strong: #423e34;
+  --outline: #2e2b24;
+  --outline-hover: #423e34;
 
-  --ok: #2dd4bf;
-  --ok-soft: rgba(45, 212, 191, 0.15);
-  --warn: #fbbf24;
-  --warn-soft: rgba(251, 191, 36, 0.15);
-  --danger: #fb7185;
-  --danger-soft: rgba(251, 113, 133, 0.15);
+  --ok: #6fbb95;
+  --ok-soft: rgba(111, 187, 149, 0.15);
+  --warn: #d8a24a;
+  --warn-soft: rgba(216, 162, 74, 0.15);
+  --danger: #e08585;
+  --danger-soft: rgba(224, 133, 133, 0.15);
 
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.45);
-  --shadow-sm: 0 2px 0 #080a0f, 0 4px 10px rgba(0, 0, 0, 0.4);
-  --shadow: 0 3px 0 #080a0f, 0 10px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 18px 44px rgba(0, 0, 0, 0.65);
-  --shadow-card: 0 3px 0 #090c12, 0 8px 20px -6px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover: 0 5px 0 var(--outline-hover), 0 14px 28px -6px rgba(0, 0, 0, 0.65);
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow: none;
+  --shadow-lg: none;
+  --shadow-card: none;
+  --shadow-card-hover: none;
 
-  --hue-a: #818cf8; --hue-a-soft: rgba(129, 140, 248, 0.15);
-  --hue-b: #2dd4bf; --hue-b-soft: rgba(45, 212, 191, 0.15);
-  --hue-c: #fbbf24; --hue-c-soft: rgba(251, 191, 36, 0.15);
-  --hue-d: #fb7185; --hue-d-soft: rgba(251, 113, 133, 0.15);
+  --hue-a: #93abe6; --hue-a-soft: rgba(147, 171, 230, 0.14);
+  --hue-b: #e0784f; --hue-b-soft: rgba(224, 120, 79, 0.14);
+  --hue-c: #d8a24a; --hue-c-soft: rgba(216, 162, 74, 0.15);
+  --hue-d: #6fbb95; --hue-d-soft: rgba(111, 187, 149, 0.15);
 
   color-scheme: dark;
 }
@@ -224,7 +241,7 @@ html[data-reading="on"][data-theme="dark"] {
 }
 
 /* ---------- font family control ---------- */
-html[data-font="serif"] { --font: var(--font-serif); }
+html[data-font="sans"] { --font: var(--font-sans); }
 html[data-font="mono"] { --font: var(--font-mono); }
 
 /* ---------- contrast control ---------- */

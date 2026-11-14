@@ -9,7 +9,7 @@ window.ASM.meta = {
   "nameAs": "অসমীয়া",
   "nameBo": "লুইত্ৰা",
   "title": "Luitra — Assamese Learning Platform",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "released": "2026-11-14",
   "tagline": "An academic-grade, self-contained platform for learning Assamese (অসমীয়া, Asomiya).",
   "description": "Learn Assamese (অসমীয়া) from first principles: a graded curriculum, a grammar reference, verb conjugation tables across the honorific tiers, the Assamese script and its sounds, a searchable English–Assamese dictionary, everyday phrases, real conversations, a quiz and an English–Assamese translator. Runs entirely offline — no build step, no dependencies.",

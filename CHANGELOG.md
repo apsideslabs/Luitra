@@ -3,6 +3,21 @@
 All notable changes to **Luitra — Assamese Learning Platform**.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [3.4.0] — 2026-11-14
+
+### Changed
+
+- **A new design language: “Luitra Press”.** The platform was wearing a boxed, elevated, rounded studio skin — bordered cards, bottom lips, ambient shadows, pill buttons, indigo-to-teal gradients, and two webfonts that never loaded and silently fell back to the system UI font. That is a SaaS vocabulary, and it made a language reference look like a startup product.
+
+  The press vocabulary instead:
+
+  - **Type does the work.** A serif reading face (Iowan / Palatino / Georgia) for display and body, with the sans reserved for chrome and labels. Body text is 17px on a 1.7 line height in a 66-character measure. The named webfonts are gone, so the stacks now lead with faces that ship with real systems rather than with ones that quietly fall back.
+  - **Rules, not boxes.** Cards became hairline-separated sections. The dictionary is now a ruled list rather than 433 bordered cards. Tables sit on the page instead of inside a framed panel. The lesson grid is a ruled contents grid, and the script chart is a hairline grid.
+  - **No elevation, no gradients, no pills.** Every shadow token is `none`; the three gradient tokens are flat fills; corners are 2–4px; the segmented controls are underlined tabs, and the sidebar's active item is a rule rather than a filled block.
+  - **Two inks.** One deep blue and one vermilion for marks, on warm ivory paper. Dark theme is the same press printed on black.
+
+  The change is made through the design tokens plus a documented flattening layer, so no component class names changed and the display, reading, contrast and font controls all still work.
+
 ## [3.3.2] — 2026-11-14
 
 ### Fixed
