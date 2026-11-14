@@ -2193,3 +2193,66 @@ html[data-display="standalone"] .site-footer .inner:first-child > div:nth-child(
   .install-banner { grid-template-columns: auto minmax(0, 1fr); }
   .install-banner-actions { grid-column: 1 / -1; justify-content: flex-end; }
 }
+
+/* ---------- install invitation: drawer row ----------
+   The same invitation as the footer banner, in a compact form for the drawer.
+   install.js toggles both through [data-install-banner]. */
+.drawer-install {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--sp-3);
+  margin: var(--sp-4) 0 0;
+  padding: var(--sp-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--brand) 8%, var(--bg-soft));
+}
+.drawer-install[hidden] { display: none; }
+.drawer-install img { display: block; width: 38px; height: 38px; border-radius: 10px; box-shadow: var(--shadow-xs); }
+.drawer-install .di-copy { min-width: 0; display: grid; gap: 1px; }
+.drawer-install strong { font-size: var(--fs-sm); color: var(--ink); line-height: 1.25; }
+.drawer-install .di-copy span { font-size: var(--fs-xs); color: var(--muted); line-height: 1.25; }
+.drawer-install [data-install-app][hidden] { display: none; }
+.drawer-install .btn { white-space: nowrap; }
+
+/* Keep the footer banner a compact single row on phones. */
+@media (max-width: 640px) {
+  .install-banner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--sp-2) var(--sp-3);
+    padding: var(--sp-3);
+    margin-top: var(--sp-6);
+  }
+  .install-banner-mark { width: 40px; height: 40px; border-radius: 11px; }
+  .install-banner-title { font-size: var(--fs-base); }
+  .install-banner-text { font-size: var(--fs-xs); }
+  .install-banner-actions { grid-column: auto; justify-content: flex-end; }
+  .install-banner .btn { white-space: nowrap; padding-inline: var(--sp-3); }
+}
+
+/* Compact single-row banner on phones: the short title replaces the long one
+   and the description steps aside, so the bar stays a bar. */
+.ib-title-short { display: none; }
+@media (max-width: 640px) {
+  .install-banner-title {
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    font-size: var(--fs-sm);
+  }
+  .ib-title-full { display: none; }
+  .ib-title-short { display: inline; }
+  .install-banner-text { display: none; }
+  .install-banner { padding: var(--sp-2) var(--sp-3); }
+  .install-banner-mark { width: 34px; height: 34px; border-radius: 9px; }
+  .install-banner .btn.small { padding: 7px 11px; font-size: var(--fs-xs); }
+}
+
+/* Very narrow phones: tighten the bar rather than truncate the name. */
+@media (max-width: 380px) {
+  .install-banner { gap: var(--sp-2); padding: var(--sp-2); }
+  .install-banner-mark { width: 30px; height: 30px; border-radius: 8px; }
+  .install-banner-title { font-size: var(--fs-xs); letter-spacing: 0; }
+  .install-banner .btn.small { padding: 6px 9px; font-size: 11px; }
+  .install-banner-actions { gap: 4px; }
+  .install-banner .icon-btn { width: 28px; height: 28px; }
+}

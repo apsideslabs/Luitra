@@ -3,6 +3,22 @@
 All notable changes to **Luitra — Assamese Learning Platform**.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [3.3.2] — 2026-11-14
+
+### Fixed
+
+- **The install invitation could be hidden for good, and often never appeared at all.** Two separate faults:
+
+  - A **permanent** "dismissed" flag was written to `localStorage`, so once the banner had been seen and dismissed — or the app had been installed — it never came back. Uninstalling the app did not bring it back, which is exactly backwards. Dismissal is now **session-scoped**, and any leftover flag from the old build is cleared on load.
+  - The banner was shown **only when the browser had already fired `beforeinstallprompt`**. Browsers withhold that event for a while after an uninstall, so the invitation vanished precisely when it was most wanted. Visibility now follows the **install state** instead: shown whenever the app is not installed and the browser could install it, whatever the event does.
+
+- **The invitation is now findable.** It was only at the foot of the page, below a long article. There is now also a compact row **at the top of the drawer, under the search** — so opening the hamburger menu shows it immediately.
+
+### Changed
+
+- On phones the footer banner is a **single compact row** (54–56px) instead of a stacked card: a short title, no description, and a tighter button. At 320px the full title used to wrap to five lines.
+- Clicking install when the browser offers no prompt now tells the reader exactly where to look — the browser menu's “Install app” or “Add to Home screen” — instead of a dead end.
+
 ## [3.3.1] — 2026-10-03
 
 ### Changed

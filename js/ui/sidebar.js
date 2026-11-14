@@ -82,6 +82,21 @@
       </div>`;
   }
 
+  /* A compact install invitation inside the drawer, so it can be found from the
+     menu as well as at the foot of the page. install.js owns its visibility. */
+  function installRowHTML() {
+    const meta = window.ASM.meta;
+    return `
+      <div class="drawer-install" data-install-banner hidden>
+        <img src="assets/icon-192.png" alt="" width="38" height="38" loading="lazy" decoding="async">
+        <div class="di-copy">
+          <strong>Install ${meta.name}</strong>
+          <span>Full screen, works offline</span>
+        </div>
+        <button class="btn primary small" type="button" data-install-app hidden>Install app</button>
+      </div>`;
+  }
+
   function mount(page) {
     const el = document.getElementById("sidebar");
     if (!el) return;
@@ -89,10 +104,14 @@
     const renderAll = () => {
       el.innerHTML =
         drawerHeadHTML() +
+        installRowHTML() +
         `<div class="sidebar-scroll">` +
         AX.chrome.NAV.map((g) => groupHTML(g, page)).join("") +
         progressHTML(page) +
         `</div>`;
+
+      // the row was just re-created — let install.js decide whether it shows
+      if (AX.install && AX.install.refresh) AX.install.refresh();
 
       const closeBtn = el.querySelector("#drawer-close");
       if (closeBtn) {

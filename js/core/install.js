@@ -9,6 +9,11 @@
    over HTTPS). We hold that event and replay it on the user's
    click — the prompt must come from a user gesture.
 
+   Visibility follows the INSTALL STATE, never a stored "hidden"
+   flag. An invitation that could never come back would still be
+   gone after the app was uninstalled, which is exactly wrong: the
+   banner must return the moment the app is no longer installed.
+
    Loaded after js/app.js.
    ============================================================ */
 
@@ -19,24 +24,33 @@
   let deferred = null;
   let installed = false;
 
-  /* Set once the app is installed, or once the reader turns the banner down.
-     Either way the invitation is not shown again. */
-  const HIDE_KEY = "luitra.install.hidden";
+  /* Dismissal lasts for the session only — never for good. */
+  const DISMISS_KEY = "luitra.install.dismissed";
+  const LEGACY_KEY = "luitra.install.hidden";
 
-  function hiddenForGood() {
+  function dismissed() {
     try {
-      return localStorage.getItem(HIDE_KEY) === "1";
+      return sessionStorage.getItem(DISMISS_KEY) === "1";
     } catch (e) {
-      return false; // private mode — the banner behaves as un-dismissed
+      return false; // private mode — treat as not dismissed
     }
   }
 
-  function hideForGood() {
+  function setDismissed(v) {
     try {
-      localStorage.setItem(HIDE_KEY, "1");
+      if (v) sessionStorage.setItem(DISMISS_KEY, "1");
+      else sessionStorage.removeItem(DISMISS_KEY);
     } catch (e) {
       /* ignore */
     }
+  }
+
+  /* An earlier build remembered a dismissal in localStorage forever. Drop it,
+     so anyone who was locked out of the banner gets it back. */
+  try {
+    localStorage.removeItem(LEGACY_KEY);
+  } catch (e) {
+    /* ignore */
   }
 
   const isStandalone = () =>
@@ -46,6 +60,10 @@
   const isIOS = () =>
     /iPad|iPhone|iPod/.test(navigator.userAgent) ||
     (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  /* Firefox cannot install a web app at all, so it gets no invitation. Every
+     other engine either fires the prompt or can install from its own menu. */
+  const cannotInstall = () => !isIOS() && /Firefox|FxiOS/.test(navigator.userAgent);
 
   /* One codebase, two feels: stamp the display mode on <html> so the CSS can
      trim the website chrome when the page is running as an installed app. */
@@ -67,22 +85,26 @@
     const canPrompt = !!deferred;
     const standalone = isStandalone() || installed;
 
-    /* The banner is shown only when installing is actually possible, and never
-       in the installed app, after an install, or after a dismissal. */
-    const offerable = !standalone && !hiddenForGood() && (canPrompt || isIOS());
+    /* Shown whenever the app is not installed and the browser could install it.
+       Not gated on beforeinstallprompt: the browser withholds that event for a
+       while after an uninstall, and the invitation must not vanish with it. */
+    const offerable = !standalone && !dismissed() && !cannotInstall();
+
     banners().forEach((el) => {
       el.hidden = !offerable;
     });
 
     buttons().forEach((btn) => {
-      if (standalone) {
+      if (!offerable) {
         btn.hidden = true;
         return;
       }
-      // show the button when the browser can prompt, or on iOS where
-      // we can still explain the manual route
-      btn.hidden = !(canPrompt || isIOS());
-      btn.textContent = canPrompt ? "Install app" : "Add to Home Screen";
+      btn.hidden = false;
+      btn.textContent = canPrompt
+        ? "Install app"
+        : isIOS()
+          ? "Add to Home Screen"
+          : "Install app";
     });
   }
 
@@ -103,28 +125,24 @@
         /* older browsers resolve nothing; carry on */
       }
       deferred = null;
-      paint();
       if (choice && choice.outcome === "accepted") {
-        installed = true;
-        hideForGood(); // accepted — do not wait for appinstalled to retire the banner
+        installed = true; // retire the invitation immediately, do not wait for appinstalled
+        paint();
         setStatus("Installing — Luitra will appear on your home screen.", "ok");
       } else {
+        paint();
         setStatus("Install cancelled. You can try again any time.", "");
       }
       return;
     }
 
     if (isIOS()) {
-      setStatus(
-        "On iPhone or iPad: tap Share, then “Add to Home Screen”.",
-        "ok"
-      );
-      if (btn) btn.hidden = true;
+      setStatus("On iPhone or iPad: tap Share, then “Add to Home Screen”.", "ok");
       return;
     }
 
     setStatus(
-      "Your browser does not offer app installation. Use the browser menu’s “Install” or “Add to Home screen”.",
+      "Open your browser menu and choose “Install app” or “Add to Home screen”.",
       "warn"
     );
   }
@@ -139,7 +157,6 @@
     window.addEventListener("appinstalled", () => {
       installed = true;
       deferred = null;
-      hideForGood(); // installed — the invitation has done its job
       paint();
       setStatus("Luitra is installed. Open it from your home screen or app list.", "ok");
     });
@@ -155,7 +172,7 @@
       const dismiss = e.target.closest("[data-install-dismiss]");
       if (dismiss) {
         e.preventDefault();
-        hideForGood();
+        setDismissed(true);
         paint();
       }
     });
@@ -165,6 +182,7 @@
 
   AX.install = {
     prompt: () => install(null),
+    refresh: paint,
     get available() {
       return !!deferred;
     },
@@ -172,7 +190,7 @@
       return isStandalone() || installed;
     },
     get dismissed() {
-      return hiddenForGood();
+      return dismissed();
     },
   };
 

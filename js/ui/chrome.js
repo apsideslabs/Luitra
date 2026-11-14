@@ -158,7 +158,7 @@
       <div class="install-banner" id="install-banner" data-install-banner role="region" aria-label="Install ${meta.name} as an app" hidden>
         <img class="install-banner-mark" src="assets/icon-192.png" alt="" width="56" height="56" loading="lazy" decoding="async">
         <div class="install-banner-copy">
-          <p class="install-banner-title">Install ${meta.name} as an app</p>
+          <p class="install-banner-title"><span class="ib-title-full">Install ${meta.name} as an app</span><span class="ib-title-short">Install ${meta.name}</span></p>
           <p class="install-banner-text">Add it to your home screen — it opens full screen and keeps working offline.</p>
         </div>
         <div class="install-banner-actions">
